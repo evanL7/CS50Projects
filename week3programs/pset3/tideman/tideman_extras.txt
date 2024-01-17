@@ -1,0 +1,158 @@
+                for (int k = 0, except_last = candidate_count - 1; k < except_last; k++)
+                {
+                    if (i != k)
+                    {
+
+
+
+            else if (ranks[j] == i)
+            {
+                preferences[i][j]++;
+            }
+
+        for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if (i == j)
+            {
+                preferences[i][j] = 0; // Set zero for individuals against themselves
+            }
+            else if (ranks[i] == j)
+            {
+                for (int m = 0; m < candidate_count; m++)
+                {
+                    preferences[i][m]++;
+                }
+            }
+        }
+    }
+
+            printf("Rank:\n");
+        for (int z = 0; z < candidate_count; z++)
+        {
+            printf("Rank %d: = %d ", z+1, ranks[z]);
+        }
+        printf("\n");
+
+            // Test code, delete later
+    printf("Preferences:\n");
+    for (int x = 0; x < candidate_count; x++)
+    {
+        for (int y = 0; y < candidate_count; y++)
+        {
+            printf("%d ", preferences[x][y]);
+        }
+        printf("\n");
+    }
+    printf("\n\n");
+    //
+
+        for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = i + 1, k = candidate_count - 1; j < k; j++)
+        {
+            if (preferences[i][j] > preferences[j][i])
+            {
+                pairs[i].winner = i;
+                pairs[i].loser = j;
+                pair_count++;
+            }
+            else if (preferences[i][j] < preferences[j][i])
+            {
+                pairs[i].winner = j;
+                pairs[i].loser = i;
+                pair_count++;
+            }
+            printf("pairs[%d] winner=%d, loser=%d\n\n",i,i,j);
+
+        }
+    }
+
+                printf("pairs[%d] winner=%d, loser=%d\n\n",pair_count,i,j);
+
+                printf("pairs[%d] winner=%d, loser=%d\n\n",pair_count,j,i);
+
+
+
+    pair temp_pair = pairs[0];
+    pair current_strongest;
+
+    for (int i = 0; i < pair_count; i++)
+    {
+        current_strongest = pairs[i]; // Arbitrarily selecting the first element for baseline
+
+        for (int j = 0; j < pair_count; j++)
+        {
+            if (preferences[pairs[j].winner][pairs[j].loser] > preferences[current_strongest.winner][current_strongest.loser])
+            {
+                current_strongest = pairs[j]; // May need some debugging
+            }
+        }
+        pairs[i] = current_strongest; // Sort the strongest to the leftmost position
+    }
+
+    int counter;
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        counter = 0;
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if (locked[i+j][i] == 0)
+            {
+                counter++;
+            }
+
+            if (counter == candidate_count)
+            {
+                printf("%s\n", candidates[i]);
+                return;
+            }
+        }
+    }
+
+
+locked[pairs[i].loser][pairs[i].winner] == false
+
+    for (int i = 0; i < pair_count; i++)
+    {
+        for (int j = 0; j < pair_count; j++)
+        {
+            if (locked[pairs[i].loser][pairs[i].winner] == false) // Inverse of the array
+            {
+                locked[pairs[i].winner][pairs[i].loser] = true;
+            }
+
+            //if
+        }
+    }
+
+
+    // Locking the first two pairs will not create a cycle
+    locked[pairs[0].winner][pairs[0].loser] = true;
+    locked[pairs[1].winner][pairs[1].loser] = true;
+
+    bool flag = false;
+
+    for (int i = 0; i < pair_count; i++)
+    {
+        for (int j = 0; j < pair_count; j++)
+        {
+            if (pairs[i].winner == pairs[j].loser) // To ensure cycle not created
+            {
+                flag = false;
+                break;
+            }
+            else
+            {
+                flag = true;
+            }
+        }
+        if (flag)
+        {
+            locked[pairs[i].winner][pairs[i].loser] = true;
+            flag = false;
+        }
+
+    }

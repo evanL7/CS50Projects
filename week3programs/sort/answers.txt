@@ -1,0 +1,16 @@
+sort1 uses: bubble sort
+
+How do you know?: By testing both the random text file and the sorted text file of 50,000 numbers with sort1,
+I noticed that sort1 was significantly faster with the sorted text file than the random text file.
+Since bubble sort has a big O (worst case) of n^2 and a big omega (best case) of n, sort1 uses bubble sort.
+
+sort2 uses: merge sort
+
+How do you know?: In all three cases of testing the text files with 50,000 numbers,
+sort2 was significantly faster than sort1 and sort3. Since merge sort has big theta of nlogn,
+merge sort is faster than n^2 in the worst cases for sort1 and sort3.
+
+sort3 uses: selection sort
+
+How do you know?: The sort3 program consistently delivered the same time against all three cases of the text files
+containing 50,000 numbers. Since selection sort has a big theta of n^2, sort3 uses selection sort.
