@@ -1,0 +1,154 @@
+CREATE TABLE crime_scene_reports (
+    id INTEGER,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    street TEXT,
+    description TEXT,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE interviews (
+    id INTEGER,
+    name TEXT,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    transcript TEXT,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE atm_transactions (
+    id INTEGER,
+    account_number INTEGER,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    atm_location TEXT,
+    transaction_type TEXT,
+    amount INTEGER,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE bank_accounts (
+    account_number INTEGER,
+    person_id INTEGER,
+    creation_year INTEGER,
+    FOREIGN KEY(person_id) REFERENCES people(id)
+);
+
+CREATE TABLE airports (
+    id INTEGER,
+    abbreviation TEXT,
+    full_name TEXT,
+    city TEXT,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE flights (
+    id INTEGER,
+    origin_airport_id INTEGER,
+    destination_airport_id INTEGER,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    hour INTEGER,
+    minute INTEGER,
+    PRIMARY KEY(id),
+    FOREIGN KEY(origin_airport_id) REFERENCES airports(id),
+    FOREIGN KEY(destination_airport_id) REFERENCES airports(id)
+);
+
+CREATE TABLE passengers (
+    flight_id INTEGER,
+    passport_number INTEGER,
+    seat TEXT,
+    FOREIGN KEY(flight_id) REFERENCES flights(id)
+);
+
+CREATE TABLE phone_calls (
+    id INTEGER,
+    caller TEXT,
+    receiver TEXT,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    duration INTEGER,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE people (
+    id INTEGER,
+    name TEXT,
+    phone_number TEXT,
+    passport_number INTEGER,
+    license_plate TEXT,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE bakery_security_logs (
+    id INTEGER,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    hour INTEGER,
+    minute INTEGER,
+    activity TEXT,
+    license_plate TEXT,
+    PRIMARY KEY(id)
+);
+
+sqlite> .tables
+airports              crime_scene_reports   people
+atm_transactions      flights               phone_calls
+bakery_security_logs  interviews
+bank_accounts         passengers
+
+
+| Ruth    | Sometime within ten minutes of the theft, I saw the thief get into a car in the bakery parking lot and drive away. If you have security footage from the bakery parking lot, you might want to look for cars that left the parking lot in that time frame.                                                          |
+| Eugene  | I don't know the thief's name, but it was someone I recognized. Earlier this morning, before I arrived at Emma's bakery, I was walking by the ATM on Leggett Street and saw the thief there withdrawing some money.                                                                                                 |
+| Raymond | As the thief was leaving the bakery, they called someone who talked to them for less than a minute. In the call, I heard the thief say that they were planning to take the earliest flight out of Fiftyville tomorrow. The thief then asked the person on the other end of the phone to purchase the flight ticket.
+| Barbara | “You had my note?” he asked with a deep harsh voice and a strongly marked German accent. “I told you that I would call.” He looked from one to the other of us, as if uncertain which to address.
+
+plates
+| exit     | 5P2BI95       | 16     | 10   |
+| exit     | 94KL13X       | 18     | 10   |
+| exit     | 6P58WS2       | 18     | 10   |
+| exit     | 4328GD8       | 19     | 10   |
+| exit     | G412CB7       | 20     | 10   |
+| exit     | L93JTIZ       | 21     | 10   |
+| exit     | 322W7JE       | 23     | 10   |
+| exit     | 0NTHK55       | 23     | 10   |
+
+atm accounts
+| 28500762       |
+| 28296815       |
+| 76054385       |
+| 49610011       |
+| 16153065       |
+| 25506511       |
+| 81061156       |
+| 26013199       |
+
+caller id
+|     caller     |    receiver    | duration |
++----------------+----------------+----------+
+| (130) 555-0289 | (996) 555-8899 | 51       |
+| (499) 555-9472 | (892) 555-8872 | 36       |
+| (367) 555-5533 | (375) 555-8161 | 45       |
+| (609) 555-5876 | (389) 555-5198 | 60       |
+| (499) 555-9472 | (717) 555-1342 | 50       |
+| (286) 555-6063 | (676) 555-6554 | 43       |
+| (770) 555-1861 | (725) 555-3243 | 49       |
+| (031) 555-6622 | (910) 555-3251 | 38       |
+| (826) 555-1652 | (066) 555-9701 | 55       |
+| (338) 555-6650 | (704) 555-2131 | 54       |
+
+Flight details
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2021 | 7     | 29  | 8    | 20     |
+
++-------+----------------+-----------------+---------------+
+| name  |  phone_number  | passport_number | license_plate |
++-------+----------------+-----------------+---------------+
+| Bruce | (367) 555-5533 | 5773159633      | 94KL13X       |
+| Diana | (770) 555-1861 | 3592750733      | 322W7JE       |
