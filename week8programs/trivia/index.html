@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function() {
+
+                document.querySelector('#optionA').onclick = function(){
+                    document.querySelector('#optionA').style.backgroundColor = 'red';
+                    document.querySelector('#ans1').innerHTML = 'Incorrect.';
+                }
+
+                document.querySelector('#optionB').onclick = function(){
+                    document.querySelector('#optionB').style.backgroundColor = 'red';
+                    document.querySelector('#ans1').innerHTML = 'Incorrect.';
+                }
+
+                document.querySelector('#optionC').onclick = function(){
+                    document.querySelector('#optionC').style.backgroundColor = 'green';
+                    document.querySelector('#ans1').innerHTML = 'Correct!';
+                }
+
+                document.querySelector('#optionD').onclick = function(){
+                    document.querySelector('#optionD').style.backgroundColor = 'red';
+                    document.querySelector('#ans1').innerHTML = 'Incorrect.';
+                }
+
+                document.querySelector('#submit_id').onclick = function(){
+                    let answer_text = document.querySelector('#ans2').value;
+                    if (answer_text == '10') {
+                        document.querySelector('#ans2').style.backgroundColor = 'green';
+                        document.querySelector('#ans2response').innerHTML = 'Correct!';
+                    }
+                    else {
+                        document.querySelector('#ans2').style.backgroundColor = 'red';
+                        document.querySelector('#ans2response').innerHTML = 'Incorrect.';
+                    }
+                }
+            });
+
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+                <h3> This is an attention check. Click option C:</h3>
+
+                <h4 id="ans1"></h4>
+
+                <button id="optionA" type="button">Option A</button>
+
+                <button id="optionB" type="button">Option B</button>
+
+                <button id="optionC" type="button">Option C</button>
+
+                <button id="optionD" type="button">Option D</button>
+
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+
+                <h3>Write the numerical form of ten:</h3>
+                <h4 id="ans2response"></h4>
+
+                <input autocomplete="off" id="ans2" type="text">
+                <button id="submit_id" type="submit">Submit</button>
+
+            </div>
+        </div>
+    </body>
+</html>

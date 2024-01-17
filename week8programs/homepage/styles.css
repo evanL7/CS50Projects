@@ -1,0 +1,41 @@
+#webpage_name {
+    font-size: 9vw; /* vw units for mobile friendly */
+    margin: auto;
+    padding: 10px 10px 0px 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#navigation {
+    text-align: center;
+    word-spacing: 30px;
+}
+
+.gifs {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+#links {
+    text-align: center;
+    padding: 30px;
+}
+
+body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+}
+
+.dark-mode {
+    background-color: black !important;
+    color: white;
+}
+
+button {
+    border-radius: 20px;
+}
